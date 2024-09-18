@@ -1,6 +1,6 @@
-import Chatbar from "./Chatbar";
-import ChatArea from "./ChatArea";
-import Chatlist from "./Chatlist";
+import Chatbar from "../chat_bar/Chatbar";
+import ChatArea from "../chat_area/ChatArea";
+import Chatlist from "../chat_list/Chatlist";
 import "./Chatbox.css";
 import { useState } from "react";
 import classNames from "classnames";

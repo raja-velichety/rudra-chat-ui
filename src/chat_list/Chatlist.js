@@ -1,6 +1,6 @@
-import blankprofile from "./bp.png";
+import blankprofile from "../assets/images/bp.png";
 import { useState } from "react";
-import TopToolbar from "./TopToolbar";
+import TopToolbar from "../top_toolbar/TopToolbar";
 function Chatlist(props) {
   const [newchat, setNewchat] = useState("");
   return (
