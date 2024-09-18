@@ -1,0 +1,26 @@
+.top-toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+
+.top-toolbar .sub-toolbar {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-end;
+}
+
+.newchat,
+.search {
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 3px;
+  width: 90%;
+}
+
+.logo {
+  color: white;
+  font-size: 2rem;
+}

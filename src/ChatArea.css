@@ -1,0 +1,23 @@
+.chatter-top {
+  height: fit-content;
+  display: flex;
+  background-color: rgb(243, 248, 255);
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  color: black;
+  padding: 0.5rem;
+  line-height: 1px;
+}
+
+.chat-profile-name {
+  font-size: large;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.chat-last-seen {
+  font-size: xx-small;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}

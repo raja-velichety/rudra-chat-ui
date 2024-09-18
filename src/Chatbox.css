@@ -1,0 +1,110 @@
+.container {
+  justify-content: flex-end;
+  display: flex;
+  border: black solid 1px;
+  border-radius: 1rem;
+  margin-top: 5rem;
+  background-color: black;
+  max-height: inherit;
+  max-width: inherit;
+  overflow-y: scroll;
+}
+
+.chatlist .individual {
+  color: aliceblue;
+  font-weight: 300;
+  padding: 1rem 1rem 0 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.chatimage {
+  height: 5rem;
+}
+
+.chatlist-display {
+  overflow-y: scroll;
+  max-height: inherit;
+  overflow-x: hidden;
+}
+
+.cbox {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+}
+
+.chatbox {
+  display: flex;
+  flex-direction: row;
+  width: inherit;
+  border: 1px solid gainsboro;
+  border-radius: 1rem;
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  padding: 1rem;
+  background-color: rgb(240, 240, 240);
+}
+
+.chatbox .chatbar {
+  align-self: flex-end;
+  padding-right: 1rem;
+}
+
+.chatbox .chatter {
+  min-height: 35rem;
+  max-height: inherit;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbox .chatbar {
+  margin-top: 1rem;
+}
+
+.chatbox .chatbar .form-control {
+  border-radius: 1rem;
+}
+
+.chatrow .blue-bubble {
+  background-color: rgba(42, 79, 226, 0.914);
+  color: white;
+  font-size: 18;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 2px;
+  border-radius: 1rem;
+  border-bottom-right-radius: 0;
+  word-wrap: normal;
+  text-align: left;
+  padding: 0.4rem;
+  justify-self: flex-end;
+  align-self: flex-end;
+  max-width: inherit/4;
+  width: fit-content;
+}
+
+.chatrow .green-bubble {
+  background-color: rgba(42, 226, 60, 0.914);
+  color: white;
+  font-size: 18;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin: 2px;
+  border-radius: 1rem;
+  border-bottom-left-radius: 0;
+  padding: 0.4rem;
+  word-wrap: normal;
+  text-align: left;
+  justify-self: flex-start;
+  align-self: flex-start;
+  width: fit-content;
+  max-width: inherit/2;
+}
+
+.chatter .chatrow {
+  flex-direction: column;
+  margin: 2px;
+}
