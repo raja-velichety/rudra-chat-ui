@@ -84,3 +84,16 @@ body {
 .form-group {
   margin: 1rem;
 }
+
+.link-button {
+  background-color: white;
+  border: none;
+}
+
+.link-button:hover {
+  color: rgb(47, 47, 185);
+}
+
+.label {
+  margin: 1px;
+}

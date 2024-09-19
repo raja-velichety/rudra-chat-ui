@@ -1,5 +1,9 @@
+import Login from "./Login";
 import "./LoginSignup.css";
+import { useState } from "react";
+import Register from "./Register";
 export default function LoginSignup(props) {
+  const [isRegistered, setIsRegistered] = useState(false);
   return (
     <>
       <div className="sidenav">
@@ -14,32 +18,18 @@ export default function LoginSignup(props) {
       <div className="main">
         <div className="col-md-8 col-sm-12">
           <div className="login-form card p-4">
-            <form>
-              <div className="form-group">
-                <label className="label">Email</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Email"
-                />
-              </div>
-              <div className="form-group">
-                <label className="label">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Password"
-                />
-              </div>
-              <div className="row">
-                <button type="submit" className="btn btn-black mt-2">
-                  Login
-                </button>
-                <button type="submit" className="btn btn-secondary mt-2">
-                  Register
-                </button>
-              </div>
-            </form>
+            {!!isRegistered && (
+              <Login
+                setIsRegistered={setIsRegistered}
+                isRegistered={isRegistered}
+              />
+            )}
+            {!isRegistered && (
+              <Register
+                setIsRegistered={setIsRegistered}
+                isRegistered={isRegistered}
+              />
+            )}
           </div>
         </div>
       </div>
