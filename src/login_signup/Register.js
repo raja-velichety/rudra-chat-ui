@@ -1,4 +1,7 @@
-export default function Register(props) {
+import { useContext } from "react";
+import { context } from "../App";
+export default function Register() {
+  const { dispatchFunction } = useContext(context);
   return (
     <>
       <form>
@@ -39,7 +42,7 @@ export default function Register(props) {
       </form>
       <button
         className="link-button"
-        onClick={() => props.setIsRegistered(!props.isRegistered)}
+        onClick={() => dispatchFunction({ type: "setIsRegistered" })}
       >
         already registered? please login from here
       </button>
