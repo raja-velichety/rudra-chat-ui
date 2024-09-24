@@ -1,0 +1,13 @@
+.chatlist-display {
+  overflow-y: scroll;
+  max-height: 35rem;
+  overflow-x: hidden;
+}
+
+.chatlist .individual {
+  color: aliceblue;
+  font-weight: 300;
+  padding: 1rem 1rem 0 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

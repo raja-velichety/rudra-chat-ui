@@ -10,22 +10,8 @@
   overflow-y: scroll;
 }
 
-.chatlist .individual {
-  color: aliceblue;
-  font-weight: 300;
-  padding: 1rem 1rem 0 0;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
 .chatimage {
   height: 5rem;
-}
-
-.chatlist-display {
-  overflow-y: scroll;
-  max-height: inherit;
-  overflow-x: hidden;
 }
 
 .cbox {
@@ -53,7 +39,7 @@
 
 .chatbox .chatter {
   min-height: 35rem;
-  max-height: inherit;
+  max-height: 35rem;
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
@@ -102,11 +88,6 @@
   align-self: flex-start;
   width: fit-content;
   max-width: inherit/2;
-}
-
-.chatter .chatrow {
-  flex-direction: column;
-  margin: 2px;
 }
 
 .pchatemail {
