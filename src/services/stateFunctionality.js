@@ -1,13 +1,14 @@
 //Initial chat state for the application
 let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
+let currSessionStorageIsRegisteredIn = sessionStorage.getItem("isRegistered");
 
 const baseChatState = {
   isLoggedIn: currSessionStorageIsLoggedIn ?? false,
   isDarkMode: false,
-  isRegistered: false,
+  isRegistered: currSessionStorageIsRegisteredIn ?? false,
   searchString: "",
-  loginInfo: {},
-  registerInfo: {},
+  chatUserLoginInfo: {},
+  chatUserRegisterInfo: {},
   chatList: [],
   currentUserMessageList: [],
 };
@@ -31,17 +32,22 @@ function centralReducerFunction(currentState, action) {
       return getMessagesByChatID(currentState, action.payload);
     case "getChats":
       return getChats(currentState, action.payload);
+    // case "setChatUserLoginInfo":
+    //   return setChatUserLoginInfo(currentState, action.payload);
+    // case "setChatUserRegisterInfo":
+    //   return setChatUserRegisterInfo(currentState, action.payload);
     default:
       return "";
   }
 }
 
 function setIsLoggedIn(currentState, payload) {
-  sessionStorage.setItem("isLoggedIn", true);
+  sessionStorage.setItem("isLoggedIn", payload);
   return { ...currentState, isLoggedIn: payload };
 }
 
 function setIsRegistered(currentState, payload) {
+  sessionStorage.setItem("isRegistered", payload);
   return { ...currentState, isRegistered: payload };
 }
 
@@ -64,6 +70,14 @@ function setRegisterInfo(currentState, payload) {
 function getChats(currentState, payload) {
   return { ...currentState, chatList: [...payload] };
 }
+
+// function setChatUserLoginInfo(currentState, payload) {
+//   return { ...currentState, chatUserLoginInfo: { ...payload } };
+// }
+
+// function setChatUserRegisterInfo(currentState, payload) {
+//   return { ...currentState, chatUserRegisterInfo: { ...payload } };
+// }
 
 function getMessagesByChatID(currentState, payload) {}
 

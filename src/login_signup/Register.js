@@ -43,7 +43,8 @@ export default function Register() {
         })
         .then((response) => response.data)
         .then((data) => {
-          dispatchFunction({ type: "isRegistered", payload: true });
+          console.log(data);
+          dispatchFunction({ type: "setIsRegistered", payload: true });
           navigate("/");
         })
         .catch((error) => {
