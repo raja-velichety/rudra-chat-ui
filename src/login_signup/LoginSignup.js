@@ -16,8 +16,8 @@ export default function LoginSignup(props) {
       <div className="main">
         <div className="col-md-8 col-sm-12">
           <div className="login-form card p-4">
-            {!!globalChatState.isRegistered && <Login />}
-            {!globalChatState.isRegistered && <Register />}
+            {!!globalChatState?.isRegistered && <Login />}
+            {!globalChatState?.isRegistered && <Register />}
           </div>
         </div>
       </div>

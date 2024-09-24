@@ -1,20 +1,24 @@
 import blankprofile from "../assets/images/bp.png";
 import { useState } from "react";
 import TopToolbar from "../top_toolbar/TopToolbar";
+
 function Chatlist(props) {
   const [newchat, setNewchat] = useState("");
+
   return (
     <>
       <div className="container-fluid">
         <div className="chatlist">
           <TopToolbar setNewchat={setNewchat} newchat={newchat} {...props} />
           <div className="chatlist-display">
-            {props.chatlist.map((individual) => {
+            {props.chatlist?.map((individual, index) => {
               return (
-                <div className="individual">
+                <div className="individual" key={index}>
                   <div
                     className="row"
-                    onClick={() => alert(individual + " is selected")}
+                    onClick={() => {
+                      props.setMessages([...individual.messageList]);
+                    }}
                   >
                     <div className="col-md-3">
                       <img
@@ -24,7 +28,12 @@ function Chatlist(props) {
                       />
                     </div>
                     <div className="col-md-9">
-                      <span className="pchat">{individual}</span>
+                      <div className="row">
+                        <span className="pchatname">{individual.name}</span>
+                      </div>
+                      <div className="row">
+                        <span className="pchatemail">{individual.email}</span>
+                      </div>
                     </div>
                   </div>
                 </div>

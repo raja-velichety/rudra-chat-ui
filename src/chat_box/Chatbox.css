@@ -108,3 +108,8 @@
   flex-direction: column;
   margin: 2px;
 }
+
+.pchatemail {
+  color: white;
+  font-size: x-small;
+}

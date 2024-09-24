@@ -1,9 +1,13 @@
 import { useState } from "react";
 import "./TopToolbar.css";
 import classNames from "classnames";
+import { context } from "../App";
+import { useContext } from "react";
+
 export default function TopToolbar(props) {
   const [searchToggle, setSearchToggle] = useState(false);
   const [newMessageToggle, setNewMessageToggle] = useState(false);
+  const { globalChatState, dispatchFunction } = useContext(context);
 
   return (
     <>
@@ -54,7 +58,15 @@ export default function TopToolbar(props) {
           onChange={(e) => props.setNewchat(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              props.setChatlist([...props.chatlist, props.newchat]);
+              dispatchFunction({
+                type: "addToChatList",
+                payload: {
+                  id: globalChatState.chatList.length + 1,
+                  name: props.newchat,
+                  email: "",
+                  messageList: [],
+                },
+              });
               props.setNewchat("");
             }
           }}
