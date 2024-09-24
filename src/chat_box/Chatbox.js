@@ -9,7 +9,6 @@ import { context } from "../App";
 function Chatbox() {
   const { globalChatState, dispatchFunction } = useContext(context);
   const [messages, setMessages] = useState([]);
-
   return (
     <>
       <div className="container">
@@ -34,6 +33,7 @@ function Chatbox() {
           <div className="cbox">
             <div className="chatbox row">
               <ChatArea className="chatarea" clist={messages} />
+
               <Chatbar
                 className="chatbar"
                 setSinglechat={setMessages}

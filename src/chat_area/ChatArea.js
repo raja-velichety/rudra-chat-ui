@@ -1,6 +1,13 @@
 import classNames from "classnames";
 import "./ChatArea.css";
+import { useEffect, useRef } from "react";
+
 function ChatArea(props) {
+  const chatareaBottomRef = useRef(null);
+
+  useEffect(() => {
+    chatareaBottomRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [props.clist]);
   return (
     <>
       <div className="chatter">
@@ -27,6 +34,7 @@ function ChatArea(props) {
             </div>
           );
         })}
+        <div id="chatarea-bottom-reference" ref={chatareaBottomRef} />
       </div>
     </>
   );
