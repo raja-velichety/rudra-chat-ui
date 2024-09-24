@@ -34,4 +34,10 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.chatter::-webkit-scrollbar {
+  display: none;
 }

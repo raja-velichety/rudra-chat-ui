@@ -11,3 +11,12 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.chatlist-display::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chatter {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
