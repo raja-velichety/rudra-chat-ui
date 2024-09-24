@@ -5,7 +5,7 @@ import { useReducer } from "react";
 import {
   baseChatState,
   centralReducerFunction,
-} from "./services/globalStateFunctionality";
+} from "./services/stateFunctionality";
 import { createContext } from "react";
 
 export const context = createContext(null);

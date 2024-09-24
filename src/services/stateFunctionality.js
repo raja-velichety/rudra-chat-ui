@@ -29,8 +29,6 @@ function centralReducerFunction(currentState, action) {
       return getMessagesByChatID(currentState, action.payload);
     case "getChats":
       return getChats(currentState, action.payload);
-    case "registerChatUser":
-      return registerChatUser(currentState, action.payload);
     default:
       return "";
   }
@@ -65,7 +63,5 @@ function getChats(currentState, payload) {
 }
 
 function getMessagesByChatID(currentState, payload) {}
-
-function registerChatUser(currentState, payload) {}
 
 export { baseChatState, centralReducerFunction };
