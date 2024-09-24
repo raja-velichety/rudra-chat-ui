@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { context } from "../App";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ErrorMessage from "../basic_components/ErrorMessage";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function Register() {
   const [confirmPwd, setConfirmPwd] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
   const [validatePwd, setValidatePwd] = useState("");
+  const [isError, setIsError] = useState(false);
 
   function checkPwdCPwdIsEqual() {
     if (pwd !== confirmPwd) {
@@ -48,6 +50,7 @@ export default function Register() {
           navigate("/");
         })
         .catch((error) => {
+          setIsError(true);
           if (error.response) {
             // The server responded with a status code outside the 2xx range
             console.log("Error response:", error.response);
@@ -64,6 +67,9 @@ export default function Register() {
 
   return (
     <>
+      {!!isError && (
+        <ErrorMessage message={"Please Check your Login Credentials"} />
+      )}
       <form onSubmit={registerChatUser}>
         <div className="form-group">
           <label htmlFor="chatname" className="label">
@@ -131,14 +137,15 @@ export default function Register() {
               setConfirmPwd(e.target.value);
             }}
           />
-          <label
+
+          <span
             style={{
               color: checkPwdCPwdIsEqual ? "green" : "red",
               padding: "0.5rem",
             }}
           >
             {validatePwd}
-          </label>
+          </span>
         </div>
         <button type="submit" className="btn btn-primary">
           Register

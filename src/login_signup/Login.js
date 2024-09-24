@@ -2,12 +2,14 @@ import { useContext, useState } from "react";
 import { context } from "../App";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ErrorMessage from "../basic_components/ErrorMessage";
 
 export default function Login() {
   const { dispatchFunction } = useContext(context);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
+  const [isError, setIsError] = useState(false);
 
   function loginChatUser(e) {
     e.preventDefault();
@@ -33,6 +35,7 @@ export default function Login() {
         }
       })
       .catch((error) => {
+        setIsError(true);
         if (error.response) {
           // The server responded with a status code outside the 2xx range
           console.log("Error response:", error.response);
@@ -49,6 +52,9 @@ export default function Login() {
 
   return (
     <>
+      {!!isError && (
+        <ErrorMessage message={"Please Check your Login Credentials"} />
+      )}
       <form onSubmit={loginChatUser}>
         <div className="form-group">
           <label className="label">Email</label>
