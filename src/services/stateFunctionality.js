@@ -1,6 +1,8 @@
 //Initial chat state for the application
+let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
+
 const baseChatState = {
-  isLoggedIn: false,
+  isLoggedIn: currSessionStorageIsLoggedIn ?? false,
   isDarkMode: false,
   isRegistered: false,
   searchString: "",
@@ -35,6 +37,7 @@ function centralReducerFunction(currentState, action) {
 }
 
 function setIsLoggedIn(currentState, payload) {
+  sessionStorage.setItem("isLoggedIn", true);
   return { ...currentState, isLoggedIn: payload };
 }
 
