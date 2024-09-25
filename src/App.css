@@ -7,6 +7,19 @@
   pointer-events: none;
 }
 
+.container {
+  justify-content: flex-end;
+  display: flex;
+  border: black solid 1px;
+  border-radius: 1rem;
+  margin-top: 5rem;
+  background-color: black;
+  max-height: inherit;
+  max-width: inherit;
+  overflow-y: scroll;
+  width: fit-content;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

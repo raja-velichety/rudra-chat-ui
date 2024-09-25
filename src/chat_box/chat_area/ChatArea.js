@@ -10,10 +10,10 @@ function ChatArea(props) {
   }, [props.clist]);
   return (
     <>
-      <div className="chatter">
+      <div className="chat-area">
         <div
           className={classNames(
-            "chatter-top",
+            "chat-area-top",
             !!props.profile_name ? "d-block" : "d-none"
           )}
         >

@@ -1,12 +1,14 @@
 //Initial chat state for the application
 let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
 let currSessionStorageIsRegisteredIn = sessionStorage.getItem("isRegistered");
+let currSessionStorageShowChatbox = sessionStorage.getItem("showChatbox");
 
 const baseChatState = {
   isLoggedIn: currSessionStorageIsLoggedIn ?? false,
   isDarkMode: false,
   isRegistered: currSessionStorageIsRegisteredIn ?? false,
   searchString: "",
+  showChatbox: currSessionStorageShowChatbox ?? false,
   chatUserLoginInfo: {},
   chatUserRegisterInfo: {},
   chatList: [],
@@ -32,6 +34,8 @@ function centralReducerFunction(currentState, action) {
       return getMessagesByChatID(currentState, action.payload);
     case "getChats":
       return getChats(currentState, action.payload);
+    case "setShowChatbox":
+      return setShowChatbox(currentState, action.payload);
     // case "setChatUserLoginInfo":
     //   return setChatUserLoginInfo(currentState, action.payload);
     // case "setChatUserRegisterInfo":
@@ -69,6 +73,11 @@ function setRegisterInfo(currentState, payload) {
 
 function getChats(currentState, payload) {
   return { ...currentState, chatList: [...payload] };
+}
+
+function setShowChatbox(currentState, payload) {
+  sessionStorage.setItem("showChatbox", payload);
+  return { ...currentState, showChatbox: payload };
 }
 
 // function setChatUserLoginInfo(currentState, payload) {

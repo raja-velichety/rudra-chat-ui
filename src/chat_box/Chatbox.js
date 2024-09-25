@@ -17,6 +17,10 @@ function Chatbox() {
     getChatList();
   });
 
+  function showChatbox() {
+    dispatchFunction({ type: "setShowChatbox", payload: true });
+  }
+
   function getChatList() {
     axios
       .get("http://localhost:8000/chat-api/get-chats/")
@@ -40,27 +44,23 @@ function Chatbox() {
     <>
       <div className="container-fluid">
         <Navbar />
-        <div className="container">
-          <div
-            className={classNames(
-              globalChatState?.chatList?.length > 0 ? "col-md-3" : "col-md-12"
-            )}
-          >
-            <Chatlist
-              chatlist={globalChatState?.chatList}
-              dispatchFunction={dispatchFunction}
-              messages={messages}
-              setMessages={setMessages}
-            />
-          </div>
-          <div
-            className={classNames(
-              "col-md-9",
-              messages?.length >= 0 ? "d-block" : "d-none"
-            )}
-          >
-            <div className="cbox">
-              <div className="chatbox row container-fluid">
+        <div className="chat-container">
+          <div className="row">
+            <div className={classNames("col-md-3")}>
+              <Chatlist
+                chatlist={globalChatState?.chatList}
+                dispatchFunction={dispatchFunction}
+                messages={messages}
+                setMessages={setMessages}
+                showChatbox={showChatbox}
+              />
+            </div>
+            <div
+              className={classNames(
+                globalChatState.showChatbox ? "d-block col-md-9" : "d-none"
+              )}
+            >
+              <div className="chatbox row">
                 <ChatToolbar />
                 <ChatArea className="chatarea" clist={messages} />
 

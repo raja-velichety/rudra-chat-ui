@@ -1,5 +1,6 @@
-.container {
-  justify-content: flex-end;
+.chat-container {
+  justify-content: center;
+  align-items: center;
   display: flex;
   border: black solid 1px;
   border-radius: 1rem;
@@ -8,26 +9,31 @@
   max-height: inherit;
   max-width: inherit;
   overflow-y: scroll;
+  width: fit-content;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.chat-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chat-container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .chatimage {
   height: 5rem;
 }
 
-.cbox {
-  display: flex;
-  align-self: flex-end;
-  flex-direction: column;
-}
-
 .chatbox {
   display: flex;
   flex-direction: row;
-  width: inherit;
   border-top-left-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  padding: 1rem;
   background-color: rgb(240, 240, 240);
+  padding-bottom: 1rem;
 }
 
 .chatbox .chatbar {

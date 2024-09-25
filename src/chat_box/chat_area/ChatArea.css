@@ -1,4 +1,4 @@
-.chatter-top {
+.chat-area-top {
   height: fit-content;
   display: flex;
   background-color: rgb(243, 248, 255);
@@ -22,12 +22,12 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-.chatter .chatrow {
+.chat-area .chatrow {
   flex-direction: column;
   margin: 2px;
 }
 
-.chatter {
+.chat-area {
   min-height: 35rem;
   max-height: inherit;
   overflow-y: scroll;
@@ -38,6 +38,6 @@
   scrollbar-width: none; /* Firefox */
 }
 
-.chatter::-webkit-scrollbar {
+.chat-area::-webkit-scrollbar {
   display: none;
 }

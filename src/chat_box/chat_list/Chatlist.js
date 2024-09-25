@@ -18,6 +18,7 @@ function Chatlist(props) {
                   <div
                     className="row"
                     onClick={() => {
+                      props.showChatbox();
                       props.setMessages([...individual.messageList]);
                     }}
                   >
