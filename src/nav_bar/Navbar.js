@@ -14,7 +14,7 @@ function Navbar() {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
             <button className="btn btn-black" onClick={chatUserSignOut}>
-              Signout
+              ⏻
             </button>
           </li>
         </ul>

@@ -5,7 +5,6 @@ import { context } from "../App";
 import { useContext } from "react";
 
 export default function TopToolbar(props) {
-  const [searchToggle, setSearchToggle] = useState(false);
   const [newMessageToggle, setNewMessageToggle] = useState(false);
   const { globalChatState, dispatchFunction } = useContext(context);
 
@@ -21,7 +20,6 @@ export default function TopToolbar(props) {
               className="btn"
               onClick={() => {
                 setNewMessageToggle(true);
-                setSearchToggle(false);
               }}
             >
               💬
@@ -32,7 +30,7 @@ export default function TopToolbar(props) {
       <div
         className={classNames(
           "input-text-area",
-          searchToggle || newMessageToggle ? "d-block" : "d-none"
+          newMessageToggle ? "d-block" : "d-none"
         )}
       >
         <input
@@ -58,19 +56,6 @@ export default function TopToolbar(props) {
               props.setNewchat("");
             }
           }}
-        />
-        <input
-          type="text"
-          className={classNames("search", searchToggle ? "d-block" : "d-none")}
-          value={props.newchat}
-          placeholder="search"
-          //   onChange={(e) => props.setNewchat(e.target.value)}
-          //   onKeyDown={(e) => {
-          //     if (e.key === "Enter") {
-          //       props.setChatlist([...props.chatlist, props.newchat]);
-          //       props.setNewchat("");
-          //     }
-          //   }}
         />
       </div>
     </>
