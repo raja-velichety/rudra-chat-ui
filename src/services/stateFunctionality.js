@@ -1,4 +1,5 @@
-//Initial chat state for the application
+// import ChatFunctionality from "./chatFunctionality";
+
 let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
 let currSessionStorageIsRegisteredIn = sessionStorage.getItem("isRegistered");
 let currSessionStorageShowChatbox = sessionStorage.getItem("showChatbox");
@@ -17,6 +18,8 @@ const baseChatState = {
 
 //reducer function for updating of the state values
 function centralReducerFunction(currentState, action) {
+  // const chatService = new ChatFunctionality(currentState, action.payload);
+
   switch (action.type) {
     case "setIsLoggedIn":
       return setIsLoggedIn(currentState, action.payload);
@@ -26,20 +29,15 @@ function centralReducerFunction(currentState, action) {
       return setIsDarkMode(currentState, action.payload);
     case "setSearchString":
       return setSearchString(currentState, action.payload);
-    case "setLoginInfo":
-      return setLoginInfo(currentState, action.payload);
-    case "setRegisterInfo":
-      return setRegisterInfo(currentState, action.payload);
+
+    // case "newChat":
+    //   return chatService.setNewChat(currentState, action.payload);
     case "getMessagesByChatID":
       return getMessagesByChatID(currentState, action.payload);
     case "getChats":
       return getChats(currentState, action.payload);
     case "setShowChatbox":
       return setShowChatbox(currentState, action.payload);
-    // case "setChatUserLoginInfo":
-    //   return setChatUserLoginInfo(currentState, action.payload);
-    // case "setChatUserRegisterInfo":
-    //   return setChatUserRegisterInfo(currentState, action.payload);
     default:
       return "";
   }
@@ -63,13 +61,13 @@ function setSearchString(currentState, payload) {
   return { ...currentState, searchString: payload };
 }
 
-function setLoginInfo(currentState, payload) {
-  return { ...currentState, loginInfo: { ...payload } };
-}
+// function setLoginInfo(currentState, payload) {
+//   return { ...currentState, loginInfo: { ...payload } };
+// }
 
-function setRegisterInfo(currentState, payload) {
-  return { ...currentState, registerInfo: { ...payload } };
-}
+// function setRegisterInfo(currentState, payload) {
+//   return { ...currentState, registerInfo: { ...payload } };
+// }
 
 function getChats(currentState, payload) {
   return { ...currentState, chatList: [...payload] };
@@ -79,14 +77,6 @@ function setShowChatbox(currentState, payload) {
   sessionStorage.setItem("showChatbox", payload);
   return { ...currentState, showChatbox: payload };
 }
-
-// function setChatUserLoginInfo(currentState, payload) {
-//   return { ...currentState, chatUserLoginInfo: { ...payload } };
-// }
-
-// function setChatUserRegisterInfo(currentState, payload) {
-//   return { ...currentState, chatUserRegisterInfo: { ...payload } };
-// }
 
 function getMessagesByChatID(currentState, payload) {}
 

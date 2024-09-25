@@ -5,9 +5,9 @@ import "./Chatbox.css";
 import { useContext, useState, useEffect } from "react";
 import classNames from "classnames";
 import { context } from "../App";
-import axios from "axios";
 import Navbar from "../nav_bar/Navbar";
 import ChatToolbar from "./chat_toolbar/ChatToolbar";
+import { getAPI } from "../services/apiMethods";
 
 function Chatbox() {
   const { globalChatState, dispatchFunction } = useContext(context);
@@ -22,23 +22,12 @@ function Chatbox() {
   }
 
   function getChatList() {
-    axios
-      .get("http://localhost:8000/chat-api/get-chats/")
-      .then((data) => {
-        return dispatchFunction({ type: "getChats", payload: data.data });
-      })
-      .catch((error) => {
-        if (error.response) {
-          // The server responded with a status code outside the 2xx range
-          console.log("Error response:", error.response);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.log("Error request:", error.request);
-        } else {
-          // Something happened in setting up the request that triggered an error
-          console.log("Error message:", error.message);
-        }
-      });
+    const url = "http://localhost:8000/chat-api/get-chats/";
+    const handleData = (data) => {
+      return dispatchFunction({ type: "getChats", payload: data });
+    };
+
+    getAPI(url, handleData);
   }
   return (
     <>

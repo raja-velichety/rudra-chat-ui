@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { context } from "../App";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import ErrorMessage from "../basic_components/ErrorMessage";
+import { postAPI } from "../services/apiMethods";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -13,7 +12,6 @@ export default function Register() {
   const [confirmPwd, setConfirmPwd] = useState("");
   const [phonenumber, setPhonenumber] = useState("");
   const [validatePwd, setValidatePwd] = useState("");
-  const [isError, setIsError] = useState(false);
 
   function checkPwdCPwdIsEqual() {
     if (pwd !== confirmPwd) {
@@ -34,42 +32,20 @@ export default function Register() {
         password: pwd,
         phonenumber: phonenumber,
       };
-      axios
-        .post("http://localhost:8000/chat-api/register-chat-user/", {
-          data,
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Headers": "*",
-          },
-        })
-        .then((response) => response.data)
-        .then((data) => {
-          console.log(data);
-          dispatchFunction({ type: "setIsRegistered", payload: true });
-          navigate("/");
-        })
-        .catch((error) => {
-          setIsError(true);
-          if (error.response) {
-            // The server responded with a status code outside the 2xx range
-            console.log("Error response:", error.response);
-          } else if (error.request) {
-            // The request was made but no response was received
-            console.log("Error request:", error.request);
-          } else {
-            // Something happened in setting up the request that triggered an error
-            console.log("Error message:", error.message);
-          }
-        });
+
+      const url = "http://localhost:8000/chat-api/register-chat-user/";
+
+      const handleData = (data) => {
+        dispatchFunction({ type: "setIsRegistered", payload: true });
+        navigate("/");
+      };
+
+      postAPI(url, data, handleData);
     }
   }
 
   return (
     <>
-      {!!isError && (
-        <ErrorMessage message={"Please Check your Login Credentials"} />
-      )}
       <form onSubmit={registerChatUser}>
         <div className="form-group">
           <label htmlFor="chatname" className="label">
