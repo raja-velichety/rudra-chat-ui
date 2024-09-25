@@ -18,7 +18,6 @@ function ChatArea(props) {
           )}
         >
           <h1 className="chat-profile-name">{props.profile_name}</h1>
-          <caption classNames="chat-last-seen">{props.last_seen}</caption>
         </div>
         {props.clist.map((cur_item, index) => {
           return (

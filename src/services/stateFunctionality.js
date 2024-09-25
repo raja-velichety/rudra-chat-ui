@@ -1,4 +1,4 @@
-// import ChatFunctionality from "./chatFunctionality";
+import { checkIfUserIsRegistered } from "./chatFunctionality";
 
 let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
 let currSessionStorageIsRegisteredIn = sessionStorage.getItem("isRegistered");
@@ -8,6 +8,8 @@ const baseChatState = {
   isLoggedIn: currSessionStorageIsLoggedIn ?? false,
   isDarkMode: false,
   isRegistered: currSessionStorageIsRegisteredIn ?? false,
+  newChatUserIsRegistered: false,
+  newChatUserList: [],
   searchString: "",
   showChatbox: currSessionStorageShowChatbox ?? false,
   chatUserLoginInfo: {},
@@ -18,8 +20,6 @@ const baseChatState = {
 
 //reducer function for updating of the state values
 function centralReducerFunction(currentState, action) {
-  // const chatService = new ChatFunctionality(currentState, action.payload);
-
   switch (action.type) {
     case "setIsLoggedIn":
       return setIsLoggedIn(currentState, action.payload);
@@ -29,9 +29,8 @@ function centralReducerFunction(currentState, action) {
       return setIsDarkMode(currentState, action.payload);
     case "setSearchString":
       return setSearchString(currentState, action.payload);
-
-    // case "newChat":
-    //   return chatService.setNewChat(currentState, action.payload);
+    case "checkIfUserIsRegistered":
+      return checkIfUserIsRegistered(currentState, action.payload);
     case "getMessagesByChatID":
       return getMessagesByChatID(currentState, action.payload);
     case "getChats":
@@ -60,14 +59,6 @@ function setIsDarkMode(currentState) {
 function setSearchString(currentState, payload) {
   return { ...currentState, searchString: payload };
 }
-
-// function setLoginInfo(currentState, payload) {
-//   return { ...currentState, loginInfo: { ...payload } };
-// }
-
-// function setRegisterInfo(currentState, payload) {
-//   return { ...currentState, registerInfo: { ...payload } };
-// }
 
 function getChats(currentState, payload) {
   return { ...currentState, chatList: [...payload] };

@@ -14,21 +14,21 @@ function Chatbox() {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
+    function getChatList() {
+      const url = "http://localhost:8000/chat-api/get-chats/";
+      const handleData = (data) => {
+        return dispatchFunction({ type: "getChats", payload: data });
+      };
+
+      getAPI(url, handleData);
+    }
     getChatList();
-  });
+  }, []);
 
   function showChatbox() {
     dispatchFunction({ type: "setShowChatbox", payload: true });
   }
 
-  function getChatList() {
-    const url = "http://localhost:8000/chat-api/get-chats/";
-    const handleData = (data) => {
-      return dispatchFunction({ type: "getChats", payload: data });
-    };
-
-    getAPI(url, handleData);
-  }
   return (
     <>
       <div className="container-fluid">
@@ -37,7 +37,11 @@ function Chatbox() {
           <div className="row">
             <div className={classNames("col-md-3")}>
               <Chatlist
-                chatlist={globalChatState?.chatList}
+                chatlist={
+                  globalChatState.newChatUserList.length > 0
+                    ? globalChatState.newChatUserList
+                    : globalChatState.chatList
+                }
                 dispatchFunction={dispatchFunction}
                 messages={messages}
                 setMessages={setMessages}

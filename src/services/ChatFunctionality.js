@@ -1,26 +1,21 @@
-class ChatFunctionality {
-  constructor(currentState, payload) {
-    this.currentState = currentState;
-    this.payload = currentState;
-  }
-
-  //checks whether user is registered or not
-  checkIfUserIsRegistered() {}
-
-  //create new chat by checking if user is registered and add it to contact list
-  setNewChat() {}
-
-  //get chat by ID
-  getChatByID() {}
-
-  //adds user to the contact list if user is registered
-  addUserToContactList() {}
-
-  //returns contact list
-  getContactList() {}
-
-  //returns list of all the chats
-  getChatsList() {}
+export function checkIfUserIsRegistered(currentState, payload) {
+  return {
+    ...currentState,
+    newChatUserList: [...payload],
+  };
 }
 
-export default ChatFunctionality;
+//create new chat by checking if user is registered and add it to contact list
+export function setNewChat() {}
+
+//get chat by ID
+export function getChatByID() {}
+
+//adds user to the contact list if user is registered
+export function addUserToContactList() {}
+
+//returns contact list
+export function getContactList() {}
+
+//returns list of all the chats
+export function getChatsList() {}

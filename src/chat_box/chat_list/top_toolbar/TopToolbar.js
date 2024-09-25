@@ -4,9 +4,25 @@ import classNames from "classnames";
 import { context } from "../../../App";
 import { useContext } from "react";
 
+import { getAPI } from "../../../services/apiMethods";
+
 export default function TopToolbar(props) {
   const [newMessageToggle, setNewMessageToggle] = useState(false);
-  const { globalChatState, dispatchFunction } = useContext(context);
+  const { dispatchFunction } = useContext(context);
+  const [newChat, setNewChat] = useState();
+
+  function checkUser() {
+    const url =
+      "http://localhost:8000/chat-api/check-user-is-registered/" + newChat;
+
+    const handleData = (data) => {
+      dispatchFunction({
+        type: "checkIfUserIsRegistered",
+        payload: JSON.parse(data.data),
+      });
+    };
+    getAPI(url, handleData);
+  }
 
   return (
     <>
@@ -39,21 +55,12 @@ export default function TopToolbar(props) {
             "newchat",
             newMessageToggle ? "d-block" : "d-none"
           )}
-          value={props.newchat}
+          value={newChat}
           placeholder="Create new chat"
-          onChange={(e) => props.setNewchat(e.target.value)}
+          onChange={(e) => setNewChat(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              dispatchFunction({
-                type: "addToChatList",
-                payload: {
-                  id: globalChatState.chatList.length + 1,
-                  name: props.newchat,
-                  email: "",
-                  messageList: [],
-                },
-              });
-              props.setNewchat("");
+              checkUser();
             }
           }}
         />

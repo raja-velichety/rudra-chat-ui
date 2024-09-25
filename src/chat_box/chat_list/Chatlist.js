@@ -1,18 +1,15 @@
 import blankprofile from "../../assets/images/bp.png";
-import { useState } from "react";
 import TopToolbar from "./top_toolbar/TopToolbar";
 import "../chat_list/Chatlist.css";
 
 function Chatlist(props) {
-  const [newchat, setNewchat] = useState("");
-
   return (
     <>
       <div className="container-fluid">
         <div className="chatlist">
-          <TopToolbar setNewchat={setNewchat} newchat={newchat} {...props} />
+          <TopToolbar {...props} />
           <div className="chatlist-display">
-            {props.chatlist?.map((individual, index) => {
+            {props.chatlist.map((individual, index) => {
               return (
                 <div className="individual" key={index}>
                   <div

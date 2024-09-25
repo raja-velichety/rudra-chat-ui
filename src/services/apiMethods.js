@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function postAPI(url, data, handleData, handleErrors) {
+export function postAPI(url, data, handleData) {
   axios
     .post(url, {
       data,
@@ -12,19 +12,18 @@ export function postAPI(url, data, handleData, handleErrors) {
     })
     .then((response) => response.data)
     .then((data) => handleData(data))
-    .catch((error) => catchErrors(error, handleErrors));
+    .catch((error) => catchErrors(error));
 }
 
-export function getAPI(url, handleData, handleErrors) {
+export function getAPI(url, handleData) {
   axios
     .get(url)
     .then((response) => response.data)
     .then((data) => handleData(data))
-    .catch((error) => catchErrors(error, handleErrors));
+    .catch((error) => catchErrors(error));
 }
 
-function catchErrors(error, handleErrors) {
-  handleErrors();
+function catchErrors(error) {
   if (error.response) {
     // The server responded with a status code outside the 2xx range
     console.log("Error response:", error.response);
