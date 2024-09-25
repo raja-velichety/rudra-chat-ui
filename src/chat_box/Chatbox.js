@@ -7,6 +7,7 @@ import classNames from "classnames";
 import { context } from "../App";
 import axios from "axios";
 import Navbar from "../nav_bar/Navbar";
+import ChatToolbar from "./chat_toolbar/ChatToolbar";
 
 function Chatbox() {
   const { globalChatState, dispatchFunction } = useContext(context);
@@ -59,7 +60,8 @@ function Chatbox() {
             )}
           >
             <div className="cbox">
-              <div className="chatbox row">
+              <div className="chatbox row container-fluid">
+                <ChatToolbar />
                 <ChatArea className="chatarea" clist={messages} />
 
                 <Chatbar

@@ -27,7 +27,7 @@ export default function Register() {
 
   function registerChatUser(e) {
     e.preventDefault();
-    if (checkPwdCPwdIsEqual) {
+    if (checkPwdCPwdIsEqual()) {
       const data = {
         name: chatname,
         email: email,

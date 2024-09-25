@@ -27,18 +27,6 @@ export default function TopToolbar(props) {
               💬
             </button>
           </div>
-          <div className="search-group">
-            <button
-              className="btn"
-              onClick={() => {
-                setSearchToggle(true);
-                setNewMessageToggle(false);
-              }}
-            >
-              {" "}
-              🔎
-            </button>
-          </div>
         </div>
       </div>
       <div
