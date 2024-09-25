@@ -1,6 +1,6 @@
-import blankprofile from "../assets/images/bp.png";
+import blankprofile from "../../assets/images/bp.png";
 import { useState } from "react";
-import TopToolbar from "../top_toolbar/TopToolbar";
+import TopToolbar from "./top_toolbar/TopToolbar";
 import "../chat_list/Chatlist.css";
 
 function Chatlist(props) {
