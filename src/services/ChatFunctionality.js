@@ -1,10 +1,23 @@
-export function checkIfUserIsRegistered(currentState, payload) {
-  return {
-    ...currentState,
-    newChatUserList: [...payload],
-  };
+//add to chatlist
+export function addToChatList(currentState, payload) {
+  return { ...currentState, chatList: [...payload, ...currentState.chatList] };
 }
 
+export function emptyNewChatUserList(currentState, payload) {
+  return { ...currentState, newChatUserList: payload };
+}
+
+export function addMessageToChatID(currentState, payload) {
+  const chat = currentState?.chatList?.filter((chat) => {
+    if (chat.id === payload.receiver_id) return "";
+    const messageList = [payload];
+
+    chat["messageList"] = messageList;
+    return chat;
+  });
+
+  return { ...currentState, chatList: [...currentState.chatList, chat] };
+}
 //create new chat by checking if user is registered and add it to contact list
 export function setNewChat() {}
 

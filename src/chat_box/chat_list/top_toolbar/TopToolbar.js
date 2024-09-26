@@ -16,9 +16,11 @@ export default function TopToolbar(props) {
       "http://localhost:8000/chat-api/check-user-is-registered/" + newChat;
 
     const handleData = (data) => {
+      const currentChat = [...JSON.parse(data.data)][0];
+
       dispatchFunction({
-        type: "checkIfUserIsRegistered",
-        payload: JSON.parse(data.data),
+        type: "addToChatList",
+        payload: [{ ...currentChat, messageList: [] }],
       });
     };
     getAPI(url, handleData);
@@ -57,7 +59,9 @@ export default function TopToolbar(props) {
           )}
           value={newChat}
           placeholder="Create new chat"
-          onChange={(e) => setNewChat(e.target.value)}
+          onChange={(e) => {
+            setNewChat(e.target.value);
+          }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               checkUser();

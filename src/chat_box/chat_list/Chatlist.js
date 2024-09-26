@@ -3,6 +3,12 @@ import TopToolbar from "./top_toolbar/TopToolbar";
 import "../chat_list/Chatlist.css";
 
 function Chatlist(props) {
+  const chatListOnClickHandler = (chat) => {
+    //show Chatbox
+    props.showChatbox();
+    props.setCurrentChat(chat);
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -15,8 +21,7 @@ function Chatlist(props) {
                   <div
                     className="row"
                     onClick={() => {
-                      props.showChatbox();
-                      props.setMessages([...individual.messageList]);
+                      chatListOnClickHandler(individual);
                     }}
                   >
                     <div className="col-md-3">

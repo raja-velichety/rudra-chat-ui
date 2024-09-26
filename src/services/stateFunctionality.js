@@ -1,10 +1,15 @@
-import { checkIfUserIsRegistered } from "./chatFunctionality";
+import {
+  addMessageToChatID,
+  addToChatList,
+  emptyNewChatUserList,
+} from "./chatFunctionality";
 
 let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
 let currSessionStorageIsRegisteredIn = sessionStorage.getItem("isRegistered");
 let currSessionStorageShowChatbox = sessionStorage.getItem("showChatbox");
 
 const baseChatState = {
+  userInfo: {},
   isLoggedIn: currSessionStorageIsLoggedIn ?? false,
   isDarkMode: false,
   isRegistered: currSessionStorageIsRegisteredIn ?? false,
@@ -29,14 +34,18 @@ function centralReducerFunction(currentState, action) {
       return setIsDarkMode(currentState, action.payload);
     case "setSearchString":
       return setSearchString(currentState, action.payload);
-    case "checkIfUserIsRegistered":
-      return checkIfUserIsRegistered(currentState, action.payload);
-    case "getMessagesByChatID":
-      return getMessagesByChatID(currentState, action.payload);
+    case "getUserInfo":
+      return getUserInfo(currentState, action.payload);
     case "getChats":
       return getChats(currentState, action.payload);
     case "setShowChatbox":
       return setShowChatbox(currentState, action.payload);
+    case "addToChatList":
+      return addToChatList(currentState, action.payload);
+    case "addMessageToChatID":
+      return addMessageToChatID(currentState, action.payload);
+    case "emptyNewChatUserList":
+      return emptyNewChatUserList(currentState, action.payload);
     default:
       return "";
   }
@@ -69,6 +78,8 @@ function setShowChatbox(currentState, payload) {
   return { ...currentState, showChatbox: payload };
 }
 
-function getMessagesByChatID(currentState, payload) {}
+function getUserInfo(currentState, payload) {
+  return { ...currentState, userInfo: payload };
+}
 
 export { baseChatState, centralReducerFunction };

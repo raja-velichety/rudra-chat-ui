@@ -20,6 +20,10 @@ export default function Login() {
 
     const handleData = (data) => {
       if (data.isLoggedIn === "True") {
+        dispatchFunction({
+          type: "getUserInfo",
+          payload: [...JSON.parse(data.userInfo)][0],
+        });
         dispatchFunction({ type: "setIsLoggedIn", payload: true });
         dispatchFunction({ type: "setIsRegistered", payload: true });
       }

@@ -11,7 +11,7 @@ import { getAPI } from "../services/apiMethods";
 
 function Chatbox() {
   const { globalChatState, dispatchFunction } = useContext(context);
-  const [messages, setMessages] = useState([]);
+  const [currentChat, setCurrentChat] = useState({});
 
   useEffect(() => {
     function getChatList() {
@@ -37,15 +37,12 @@ function Chatbox() {
           <div className="row">
             <div className={classNames("col-md-3")}>
               <Chatlist
-                chatlist={
-                  globalChatState.newChatUserList.length > 0
-                    ? globalChatState.newChatUserList
-                    : globalChatState.chatList
-                }
+                chatlist={globalChatState.chatList}
                 dispatchFunction={dispatchFunction}
-                messages={messages}
-                setMessages={setMessages}
+                globalChatState={globalChatState}
                 showChatbox={showChatbox}
+                currentChat={currentChat}
+                setCurrentChat={setCurrentChat}
               />
             </div>
             <div
@@ -54,13 +51,21 @@ function Chatbox() {
               )}
             >
               <div className="chatbox row">
-                <ChatToolbar />
-                <ChatArea className="chatarea" clist={messages} />
+                <ChatToolbar
+                  currentChat={currentChat}
+                  setCurrentChat={setCurrentChat}
+                />
+                <ChatArea
+                  className="chatarea"
+                  globalChatState={globalChatState}
+                  currentChat={currentChat}
+                  setCurrentChat={setCurrentChat}
+                />
 
                 <Chatbar
                   className="chatbar"
-                  setSinglechat={setMessages}
-                  clist={messages}
+                  currentChat={currentChat}
+                  setCurrentChat={setCurrentChat}
                 />
               </div>
             </div>

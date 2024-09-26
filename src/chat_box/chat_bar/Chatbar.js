@@ -1,6 +1,25 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { context } from "../../App";
+
 function Chatbar(props) {
   const [message, setMessage] = useState("");
+  const { globalChatState, dispatchFunction } = useContext(context);
+
+  const addMessagesToChatID = (chat) => {
+    const messageInfo = {
+      type: "string",
+      date: new Date().toLocaleDateString(),
+      time_stamp: new Date().toLocaleTimeString(),
+      sender_id: globalChatState.userInfo.id,
+      receiver_id: chat.id,
+      data: message,
+    };
+    return dispatchFunction({
+      type: "addMessageToChatID",
+      payload: messageInfo,
+    });
+  };
+
   return (
     <>
       <div className="chatbar">
@@ -16,7 +35,7 @@ function Chatbar(props) {
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  props.setSinglechat([...props.clist, message]);
+                  addMessagesToChatID(props.currentChat);
                   setMessage("");
                 }
               }}
@@ -26,7 +45,7 @@ function Chatbar(props) {
             <button
               className="btn btn-primary"
               onClick={(e) => {
-                props.setSinglechat([...props.clist, message]);
+                addMessagesToChatID(props.currentChat);
                 setMessage("");
               }}
             >

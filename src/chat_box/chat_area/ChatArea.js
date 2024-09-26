@@ -14,12 +14,12 @@ function ChatArea(props) {
         <div
           className={classNames(
             "chat-area-top",
-            !!props.profile_name ? "d-block" : "d-none"
+            !!props.currentChat.name ? "d-block" : "d-none"
           )}
         >
-          <h1 className="chat-profile-name">{props.profile_name}</h1>
+          <h1 className="chat-profile-name">{props.currentChat.name}</h1>
         </div>
-        {props.clist.map((cur_item, index) => {
+        {props?.currentChat?.messageList?.map((cur_item, index) => {
           return (
             <div className="row chatrow">
               <span
