@@ -10,11 +10,11 @@ function Navbar(props) {
   }
   return (
     <>
-      <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">
+      <nav className="navbar navbar-light bg-light">
+        <span className="navbar-brand mb-0 h1">
           Hello {props.gcs.userInfo.name}
         </span>
-        <span class="navbar-text">
+        <span className="navbar-text">
           <button className="btn btn-black" onClick={chatUserSignOut}>
             ⏻
           </button>
