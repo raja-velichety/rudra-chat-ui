@@ -1,6 +1,6 @@
 //add to chatlist
 export function addToChatList(currentState, payload) {
-  return { ...currentState, chatList: [...payload, ...currentState.chatList] };
+  return { ...currentState, chatList: [...currentState.chatList, ...payload] };
 }
 
 export function emptyNewChatUserList(currentState, payload) {
@@ -8,12 +8,14 @@ export function emptyNewChatUserList(currentState, payload) {
 }
 
 export function addMessageToChatID(currentState, payload) {
-  const chat = currentState?.chatList?.filter((chat) => {
-    if (chat.id === payload.receiver_id) return "";
-    const messageList = [payload];
+  let chat = currentState?.chatList?.filter((chat, index) => {
+    if (index === 2) {
+      const messageList = [...chat.messageList, payload];
 
-    chat["messageList"] = messageList;
-    return chat;
+      chat["messageList"] = messageList;
+      return chat;
+    }
+    return "";
   });
 
   return { ...currentState, chatList: [...currentState.chatList, chat] };

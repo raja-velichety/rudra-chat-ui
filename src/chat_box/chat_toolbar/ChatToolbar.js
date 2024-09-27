@@ -31,34 +31,28 @@ export default function ChatToolbar(props) {
   }
   return (
     <>
-      <div className="container-fluid">
-        <nav className="navbar navbar-expand-lg">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              {!showSearch ? (
-                <button
-                  className="btn"
-                  onClick={() => setShowSearch(!showSearch)}
-                >
-                  🔎
-                </button>
-              ) : (
-                <input
-                  type="text"
-                  className="form-control"
-                  value={searchString}
-                  onChange={(e) => setSearchString(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") {
-                      searchChat();
-                    }
-                  }}
-                />
-              )}
-            </li>
-          </ul>
-        </nav>
-      </div>
+      <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">{props.chat?.name}</span>
+        <form className="form-inline">
+          {!showSearch ? (
+            <button className="btn" onClick={() => setShowSearch(!showSearch)}>
+              🔎
+            </button>
+          ) : (
+            <input
+              type="text"
+              className="form-control"
+              value={searchString}
+              onChange={(e) => setSearchString(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  searchChat();
+                }
+              }}
+            />
+          )}
+        </form>
+      </nav>
     </>
   );
 }

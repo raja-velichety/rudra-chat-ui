@@ -6,7 +6,6 @@ import { useContext, useState, useEffect } from "react";
 import classNames from "classnames";
 import { context } from "../App";
 import Navbar from "../nav_bar/Navbar";
-import ChatToolbar from "./chat_toolbar/ChatToolbar";
 import { getAPI } from "../services/apiMethods";
 
 function Chatbox() {
@@ -14,13 +13,13 @@ function Chatbox() {
   const [currentChat, setCurrentChat] = useState({});
 
   useEffect(() => {
-    function getChatList() {
+    async function getChatList() {
       const url = "http://localhost:8000/chat-api/get-chats/";
       const handleData = (data) => {
         return dispatchFunction({ type: "getChats", payload: data });
       };
 
-      getAPI(url, handleData);
+      await getAPI(url, handleData);
     }
     getChatList();
   }, []);
@@ -32,7 +31,7 @@ function Chatbox() {
   return (
     <>
       <div className="container-fluid">
-        <Navbar />
+        <Navbar gcs={globalChatState} />
         <div className="chat-container">
           <div className="row">
             <div className={classNames("col-md-3")}>
@@ -51,10 +50,6 @@ function Chatbox() {
               )}
             >
               <div className="chatbox row">
-                <ChatToolbar
-                  currentChat={currentChat}
-                  setCurrentChat={setCurrentChat}
-                />
                 <ChatArea
                   className="chatarea"
                   globalChatState={globalChatState}

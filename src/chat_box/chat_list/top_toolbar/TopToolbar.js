@@ -11,7 +11,7 @@ export default function TopToolbar(props) {
   const { dispatchFunction } = useContext(context);
   const [newChat, setNewChat] = useState();
 
-  function checkUser() {
+  async function checkUser() {
     const url =
       "http://localhost:8000/chat-api/check-user-is-registered/" + newChat;
 
@@ -20,10 +20,10 @@ export default function TopToolbar(props) {
 
       dispatchFunction({
         type: "addToChatList",
-        payload: [{ ...currentChat, messageList: [] }],
+        payload: [{ ...currentChat, messageList: [], index: 3 }],
       });
     };
-    getAPI(url, handleData);
+    await getAPI(url, handleData);
   }
 
   return (

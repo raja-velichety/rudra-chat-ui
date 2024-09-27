@@ -15,8 +15,8 @@ export function postAPI(url, data, handleData) {
     .catch((error) => catchErrors(error));
 }
 
-export function getAPI(url, handleData) {
-  axios
+export async function getAPI(url, handleData) {
+  await axios
     .get(url)
     .then((response) => response.data)
     .then((data) => handleData(data))

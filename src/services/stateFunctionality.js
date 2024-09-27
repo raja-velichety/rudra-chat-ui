@@ -14,7 +14,6 @@ const baseChatState = {
   isDarkMode: false,
   isRegistered: currSessionStorageIsRegisteredIn ?? false,
   newChatUserIsRegistered: false,
-  newChatUserList: [],
   searchString: "",
   showChatbox: currSessionStorageShowChatbox ?? false,
   chatUserLoginInfo: {},
