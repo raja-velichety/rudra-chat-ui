@@ -3,13 +3,14 @@ import "./TopToolbar.css";
 import classNames from "classnames";
 import { context } from "../../../App";
 import { useContext } from "react";
+import ModalComponent from "../../../basic_components/ModalComponent";
 
 import { getAPI } from "../../../services/apiMethods";
 
 export default function TopToolbar(props) {
   const [newMessageToggle, setNewMessageToggle] = useState(false);
-  const { dispatchFunction } = useContext(context);
-  const [newChat, setNewChat] = useState();
+  const { globalChatState, dispatchFunction } = useContext(context);
+  const [newChat, setNewChat] = useState("");
 
   async function checkUser() {
     const url =
@@ -26,6 +27,19 @@ export default function TopToolbar(props) {
     await getAPI(url, handleData);
   }
 
+  async function checkIfUserIsInChatList() {
+    const chats = await globalChatState.chatList.filter((chat) => {
+      if (chat.email.toLowerCase().startsWith(newChat.toLowerCase()) === true) {
+        console.log(newChat.toLowerCase() + " " + true);
+        return chat;
+      }
+      return "";
+    });
+
+    console.log(chats);
+    return chats;
+  }
+
   return (
     <>
       <div className="top-toolbar">
@@ -38,6 +52,7 @@ export default function TopToolbar(props) {
               className="btn"
               onClick={() => {
                 setNewMessageToggle(true);
+                <ModalComponent />;
               }}
             >
               💬
@@ -65,6 +80,8 @@ export default function TopToolbar(props) {
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               checkUser();
+            } else {
+              checkIfUserIsInChatList();
             }
           }}
         />
