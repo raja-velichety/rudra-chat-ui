@@ -38,7 +38,7 @@ function Chatbox() {
         <div
           className={classNames(
             globalChatState.showChatbox
-              ? "chat-container"
+              ? "chat-container chat-container-with-chatlist"
               : "chat-container flex-center"
           )}
         >

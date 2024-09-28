@@ -71,6 +71,7 @@ export default function TopToolbar(props) {
             if (e.key === "Enter") {
               checkUser();
               props.setNewChat("");
+              props.setNewChatToogle(false);
             } else {
               checkIfUserIsInChatList();
             }

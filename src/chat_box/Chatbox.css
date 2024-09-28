@@ -11,6 +11,12 @@
   display: flex;
 }
 
+.chat-container-with-chatlist {
+  background-color: black;
+  border-radius: 1rem;
+  border: 1px solid black;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .chat-container::-webkit-scrollbar {
   display: none;
