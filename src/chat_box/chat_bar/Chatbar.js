@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { context } from "../../App";
+import { postAPI } from "../../services/apiMethods";
 
 function Chatbar(props) {
   const [message, setMessage] = useState("");
@@ -7,17 +8,28 @@ function Chatbar(props) {
 
   const addMessagesToChatID = (chat) => {
     const messageInfo = {
-      type: "string",
-      date: new Date().toLocaleDateString(),
-      time_stamp: new Date().toLocaleTimeString(),
+      // type: "string",
+      // date: new Date().toLocaleDateString(),
+      // time_stamp: new Date().toLocaleTimeString(),
       sender_id: globalChatState.userInfo.id,
-      receiver_id: chat.id,
+      receiver_id: chat.chatInfo.id,
       data: message,
     };
-    return dispatchFunction({
+
+    dispatchFunction({
       type: "addMessageToChatID",
       payload: messageInfo,
     });
+
+    const url = "http://localhost:8000/chat-api/add-new-message/";
+
+    const handleData = (data) => {
+      console.log(data.data);
+    };
+
+    const data = messageInfo;
+
+    postAPI(url, data, handleData);
   };
 
   return (

@@ -11,13 +11,11 @@
   align-self: flex-end;
 }
 
-.newchat,
-.search {
+.newchat {
   border-radius: 0.5rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 3px;
-  width: 90%;
 }
 
 .logo {

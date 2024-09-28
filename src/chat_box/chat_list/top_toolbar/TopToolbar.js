@@ -3,7 +3,6 @@ import "./TopToolbar.css";
 import classNames from "classnames";
 import { context } from "../../../App";
 import { useContext } from "react";
-import ModalComponent from "../../../basic_components/ModalComponent";
 
 import { getAPI } from "../../../services/apiMethods";
 
@@ -17,26 +16,25 @@ export default function TopToolbar(props) {
       "http://localhost:8000/chat-api/check-user-is-registered/" + newChat;
 
     const handleData = (data) => {
-      const currentChat = [...JSON.parse(data.data)][0];
+      const currentChat = data.data;
 
       dispatchFunction({
         type: "addToChatList",
-        payload: [{ ...currentChat, messageList: [], index: 3 }],
+        payload: currentChat,
       });
     };
+
     await getAPI(url, handleData);
   }
 
   async function checkIfUserIsInChatList() {
     const chats = await globalChatState.chatList.filter((chat) => {
       if (chat.email.toLowerCase().startsWith(newChat.toLowerCase()) === true) {
-        console.log(newChat.toLowerCase() + " " + true);
         return chat;
       }
       return "";
     });
 
-    console.log(chats);
     return chats;
   }
 
@@ -52,7 +50,6 @@ export default function TopToolbar(props) {
               className="btn"
               onClick={() => {
                 setNewMessageToggle(true);
-                <ModalComponent />;
               }}
             >
               💬
@@ -60,12 +57,7 @@ export default function TopToolbar(props) {
           </div>
         </div>
       </div>
-      <div
-        className={classNames(
-          "input-text-area",
-          newMessageToggle ? "d-block" : "d-none"
-        )}
-      >
+      <div className={classNames(newMessageToggle ? "d-block" : "d-none")}>
         <input
           type="text"
           className={classNames(

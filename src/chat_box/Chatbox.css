@@ -9,7 +9,6 @@
   max-height: inherit;
   max-width: inherit;
   overflow-y: scroll;
-  width: fit-content;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -47,6 +46,7 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  min-width: 100%;
 }
 
 .chatbox .chatbar {

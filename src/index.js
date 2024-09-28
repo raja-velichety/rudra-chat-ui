@@ -7,11 +7,7 @@ import { app_router } from "./services/routes";
 import { RouterProvider } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <RouterProvider router={app_router} />
-  </React.StrictMode>
-);
+root.render(<RouterProvider router={app_router} />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

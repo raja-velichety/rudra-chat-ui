@@ -15,13 +15,13 @@ function Chatlist(props) {
         <div className="chatlist">
           <TopToolbar {...props} />
           <div className="chatlist-display">
-            {props.chatlist.map((individual, index) => {
+            {props?.chatlist?.map((chat, index) => {
               return (
                 <div className="individual" key={index}>
                   <div
                     className="row"
                     onClick={() => {
-                      chatListOnClickHandler(individual);
+                      chatListOnClickHandler(chat);
                     }}
                   >
                     <div className="col-md-3">
@@ -33,10 +33,14 @@ function Chatlist(props) {
                     </div>
                     <div className="col-md-9">
                       <div className="row">
-                        <span className="pchatname">{individual.name}</span>
+                        <span className="pchatname">
+                          {chat?.chatInfo?.name}
+                        </span>
                       </div>
                       <div className="row">
-                        <span className="pchatemail">{individual.email}</span>
+                        <span className="pchatemail">
+                          {chat?.chatInfo?.email}
+                        </span>
                       </div>
                     </div>
                   </div>

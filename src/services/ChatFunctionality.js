@@ -1,6 +1,15 @@
 //add to chatlist
 export function addToChatList(currentState, payload) {
-  return { ...currentState, chatList: [...currentState.chatList, ...payload] };
+  return {
+    ...currentState,
+    chatList: [
+      ...currentState.chatList,
+      {
+        chatInfo: { ...{ ...JSON.parse(payload.chatInfo)[0] } },
+        messageList: [...payload.messageList],
+      },
+    ],
+  };
 }
 
 export function emptyNewChatUserList(currentState, payload) {
@@ -8,17 +17,15 @@ export function emptyNewChatUserList(currentState, payload) {
 }
 
 export function addMessageToChatID(currentState, payload) {
-  let chat = currentState?.chatList?.filter((chat, index) => {
-    if (index === 2) {
+  const chatList = currentState?.chatList?.map((chat) => {
+    if (chat.chatInfo.id === payload.receiver_id) {
       const messageList = [...chat.messageList, payload];
-
       chat["messageList"] = messageList;
-      return chat;
     }
-    return "";
+    return chat;
   });
 
-  return { ...currentState, chatList: [...currentState.chatList, chat] };
+  return { ...currentState, chatList: chatList };
 }
 //create new chat by checking if user is registered and add it to contact list
 export function setNewChat() {}

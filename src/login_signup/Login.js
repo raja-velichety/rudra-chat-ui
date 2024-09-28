@@ -30,7 +30,6 @@ export default function Login() {
     };
 
     postAPI(url, data, handleData);
-    navigate("/");
   }
 
   return (

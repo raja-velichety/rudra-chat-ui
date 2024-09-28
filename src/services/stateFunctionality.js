@@ -7,9 +7,10 @@ import {
 let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
 let currSessionStorageIsRegisteredIn = sessionStorage.getItem("isRegistered");
 let currSessionStorageShowChatbox = sessionStorage.getItem("showChatbox");
+const currSessionStorageUserInfo = sessionStorage.getItem("userInfo");
 
 const baseChatState = {
-  userInfo: {},
+  userInfo: { ...JSON.parse(currSessionStorageUserInfo) } ?? {},
   isLoggedIn: currSessionStorageIsLoggedIn ?? false,
   isDarkMode: false,
   isRegistered: currSessionStorageIsRegisteredIn ?? false,
@@ -35,8 +36,8 @@ function centralReducerFunction(currentState, action) {
       return setSearchString(currentState, action.payload);
     case "getUserInfo":
       return getUserInfo(currentState, action.payload);
-    case "getChats":
-      return getChats(currentState, action.payload);
+    case "getChatList":
+      return getChatList(currentState, action.payload);
     case "setShowChatbox":
       return setShowChatbox(currentState, action.payload);
     case "addToChatList":
@@ -68,8 +69,18 @@ function setSearchString(currentState, payload) {
   return { ...currentState, searchString: payload };
 }
 
-function getChats(currentState, payload) {
-  return { ...currentState, chatList: [...payload] };
+function getChatList(currentState, payload) {
+  const allChatsData = payload.map((chatData) => {
+    return {
+      chatInfo: { ...chatData.chat_info },
+      messageList: [...chatData.message_list],
+    };
+  });
+
+  return {
+    ...currentState,
+    chatList: [...currentState.chatList, ...allChatsData],
+  };
 }
 
 function setShowChatbox(currentState, payload) {
@@ -78,6 +89,7 @@ function setShowChatbox(currentState, payload) {
 }
 
 function getUserInfo(currentState, payload) {
+  sessionStorage.setItem("userInfo", JSON.stringify(payload));
   return { ...currentState, userInfo: payload };
 }
 

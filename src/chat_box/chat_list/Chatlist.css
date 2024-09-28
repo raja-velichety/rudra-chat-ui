@@ -2,6 +2,7 @@
   overflow-y: scroll;
   max-height: 35rem;
   overflow-x: hidden;
+  min-width: 100%;
 }
 
 .chatlist .individual {

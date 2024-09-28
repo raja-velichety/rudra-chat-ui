@@ -32,7 +32,9 @@ export default function ChatToolbar(props) {
   return (
     <>
       <nav className="navbar navbar-light bg-light">
-        <span className="navbar-brand mb-0 h1">{props.chat?.name}</span>
+        <span className="navbar-brand mb-0 h1">
+          {props?.chat?.chatInfo?.name}
+        </span>
         <form className="form-inline">
           {!showSearch ? (
             <button className="btn" onClick={() => setShowSearch(!showSearch)}>

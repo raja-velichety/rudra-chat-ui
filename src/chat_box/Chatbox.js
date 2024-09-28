@@ -13,16 +13,19 @@ function Chatbox() {
   const [currentChat, setCurrentChat] = useState({});
 
   useEffect(() => {
-    async function getChatList() {
-      const url = "http://localhost:8000/chat-api/get-chats/";
+    function getChatList() {
+      const url =
+        "http://localhost:8000/chat-api/get-chat-list/" +
+        globalChatState?.userInfo.id;
       const handleData = (data) => {
-        return dispatchFunction({ type: "getChats", payload: data });
+        return dispatchFunction({ type: "getChatList", payload: data.data });
       };
 
-      await getAPI(url, handleData);
+      getAPI(url, handleData);
     }
+
     getChatList();
-  }, []);
+  }, [globalChatState?.userInfo, dispatchFunction]);
 
   function showChatbox() {
     dispatchFunction({ type: "setShowChatbox", payload: true });
