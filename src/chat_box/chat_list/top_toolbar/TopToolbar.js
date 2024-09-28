@@ -3,17 +3,15 @@ import "./TopToolbar.css";
 import classNames from "classnames";
 import { context } from "../../../App";
 import { useContext } from "react";
-
 import { getAPI } from "../../../services/apiMethods";
 
 export default function TopToolbar(props) {
-  const [newMessageToggle, setNewMessageToggle] = useState(false);
   const { globalChatState, dispatchFunction } = useContext(context);
-  const [newChat, setNewChat] = useState("");
 
   async function checkUser() {
     const url =
-      "http://localhost:8000/chat-api/check-user-is-registered/" + newChat;
+      "http://localhost:8000/chat-api/check-user-is-registered/" +
+      props.newChat;
 
     const handleData = (data) => {
       const currentChat = data.data;
@@ -29,7 +27,10 @@ export default function TopToolbar(props) {
 
   async function checkIfUserIsInChatList() {
     const chats = await globalChatState.chatList.filter((chat) => {
-      if (chat.email.toLowerCase().startsWith(newChat.toLowerCase()) === true) {
+      if (
+        chat.email.toLowerCase().startsWith(props.newChat.toLowerCase()) ===
+        true
+      ) {
         return chat;
       }
       return "";
@@ -49,7 +50,7 @@ export default function TopToolbar(props) {
             <button
               className="btn"
               onClick={() => {
-                setNewMessageToggle(true);
+                props.setNewChatToogle(() => !props.newChatToggle);
               }}
             >
               💬
@@ -57,21 +58,19 @@ export default function TopToolbar(props) {
           </div>
         </div>
       </div>
-      <div className={classNames(newMessageToggle ? "d-block" : "d-none")}>
+      <div className={classNames(props.newChatToggle ? "d-flex" : "d-none")}>
         <input
           type="text"
-          className={classNames(
-            "newchat",
-            newMessageToggle ? "d-block" : "d-none"
-          )}
-          value={newChat}
+          className={classNames("newchat")}
+          value={props.newChat}
           placeholder="Create new chat"
           onChange={(e) => {
-            setNewChat(e.target.value);
+            props.setNewChat(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               checkUser();
+              props.setNewChat("");
             } else {
               checkIfUserIsInChatList();
             }

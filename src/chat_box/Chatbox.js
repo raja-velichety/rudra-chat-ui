@@ -35,9 +35,21 @@ function Chatbox() {
     <>
       <div className="container-fluid">
         <Navbar gcs={globalChatState} />
-        <div className="chat-container">
+        <div
+          className={classNames(
+            globalChatState.showChatbox
+              ? "chat-container"
+              : "chat-container flex-center"
+          )}
+        >
           <div className="row">
-            <div className={classNames("col-md-3")}>
+            <div
+              className={classNames(
+                globalChatState.showChatbox
+                  ? "col-md-3 col-sm-12"
+                  : "col-md-12 col-sm-12 only-chatlist-on-desktop"
+              )}
+            >
               <Chatlist
                 chatlist={globalChatState.chatList}
                 dispatchFunction={dispatchFunction}

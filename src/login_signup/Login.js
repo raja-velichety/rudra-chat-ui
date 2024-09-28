@@ -1,11 +1,10 @@
 import { useContext, useState } from "react";
 import { context } from "../App";
-import { useNavigate } from "react-router-dom";
 import { postAPI } from "../services/apiMethods";
 
 export default function Login() {
   const { dispatchFunction } = useContext(context);
-  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
 
