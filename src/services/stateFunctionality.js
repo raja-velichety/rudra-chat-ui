@@ -28,6 +28,8 @@ function centralReducerFunction(currentState, action) {
   switch (action.type) {
     case "setIsLoggedIn":
       return setIsLoggedIn(currentState, action.payload);
+    case "removeLoggedIn":
+      return removeLoggedIn();
     case "setIsRegistered":
       return setIsRegistered(currentState, action.payload);
     case "setIsDarkMode":
@@ -54,6 +56,10 @@ function centralReducerFunction(currentState, action) {
 function setIsLoggedIn(currentState, payload) {
   sessionStorage.setItem("isLoggedIn", payload);
   return { ...currentState, isLoggedIn: payload };
+}
+
+function removeLoggedIn() {
+  sessionStorage.removeItem("isLoggedIn");
 }
 
 function setIsRegistered(currentState, payload) {

@@ -6,7 +6,7 @@ function Navbar(props) {
   const { dispatchFunction } = useContext(context);
 
   function chatUserSignOut() {
-    dispatchFunction({ type: "setIsLoggedIn", payload: false });
+    dispatchFunction({ type: "removeLoggedIn" });
   }
   return (
     <>
