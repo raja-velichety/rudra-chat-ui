@@ -47,7 +47,7 @@ function Chatbox() {
               className={classNames(
                 globalChatState?.showChatbox
                   ? "col-md-3 col-sm-12"
-                  : "col-md-12 col-sm-12"
+                  : "col-md-12 col-sm-12 only-chatlist-on-desktop"
               )}
             >
               <Chatlist
