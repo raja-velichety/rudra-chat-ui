@@ -20,7 +20,7 @@ const baseChatState = {
   chatUserLoginInfo: {},
   chatUserRegisterInfo: {},
   chatList: [],
-  currentUserMessageList: [],
+  currentActiveChat: sessionStorage.getItem("setCurrentActiveChat") ?? "",
 };
 
 //reducer function for updating of the state values
@@ -44,6 +44,8 @@ function centralReducerFunction(currentState, action) {
       return setShowChatbox(currentState, action.payload);
     case "addToChatList":
       return addToChatList(currentState, action.payload);
+    case "setCurrentActiveChat":
+      return setCurrentActiveChat(currentState, action.payload);
     case "addMessageToChatID":
       return addMessageToChatID(currentState, action.payload);
     case "emptyNewChatUserList":
@@ -97,6 +99,11 @@ function setShowChatbox(currentState, payload) {
 function getUserInfo(currentState, payload) {
   sessionStorage.setItem("userInfo", JSON.stringify(payload));
   return { ...currentState, userInfo: payload };
+}
+
+function setCurrentActiveChat(currentState, payload) {
+  sessionStorage.setItem("currentActiveChat", payload);
+  return { ...currentState, currentActiveChat: payload };
 }
 
 export { baseChatState, centralReducerFunction };

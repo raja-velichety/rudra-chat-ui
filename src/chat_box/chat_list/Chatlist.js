@@ -4,11 +4,26 @@ import "../chat_list/Chatlist.css";
 import { useState } from "react";
 
 function Chatlist(props) {
+  // useEffect(() => {
+  //   const getActiveChat = () => {
+  //     props?.setCurrentChat(
+  //       props?.globalChatState?.Chatlist[
+  //         props?.globalChatState?.currentActiveChat
+  //       ]
+  //     );
+  //   };
+  //   getActiveChat();
+  // }, [props]);
+
   const [newChatToggle, setNewChatToggle] = useState(false);
   const [newChat, setNewChat] = useState("");
-  const chatListOnClickHandler = (chat) => {
+  const chatListOnClickHandler = (chat, chat_index) => {
     props.showChatbox();
     props.setCurrentChat(chat);
+    props.dispatchFunction({
+      type: "setCurrentActiveChat",
+      payload: chat_index,
+    });
   };
 
   return (
@@ -28,13 +43,13 @@ function Chatlist(props) {
                 <p>No chats to Display. Click on new chat to get started</p>
               </div>
             )}
-            {props?.chatlist?.map((chat, index) => {
+            {props?.chatlist?.map((chat, chat_index) => {
               return (
                 <div
                   className="individual-chat"
-                  key={index}
+                  key={chat_index}
                   onClick={() => {
-                    chatListOnClickHandler(chat);
+                    chatListOnClickHandler(chat, chat_index);
                   }}
                 >
                   <div className="col-md-3 chat-image-group">
