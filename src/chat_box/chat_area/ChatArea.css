@@ -26,6 +26,7 @@
 .chat-area .chatrow {
   flex-direction: column;
   margin: 2px;
+  padding-left: 1rem;
 }
 
 .chat-area {
