@@ -27,17 +27,24 @@ export function addMessageToChatID(currentState, payload) {
 
   return { ...currentState, chatList: chatList };
 }
-//create new chat by checking if user is registered and add it to contact list
-export function setNewChat() {}
 
-//get chat by ID
-export function getChatByID() {}
+//returns list of all the chats
+export function getChatList(currentState, payload) {
+  const allChatsData = payload.map((chatData) => {
+    return {
+      chatInfo: { ...chatData.chat_info },
+      messageList: [...chatData.message_list],
+    };
+  });
+
+  return {
+    ...currentState,
+    chatList: [...currentState.chatList, ...allChatsData],
+  };
+}
 
 //adds user to the contact list if user is registered
 export function addUserToContactList() {}
 
 //returns contact list
 export function getContactList() {}
-
-//returns list of all the chats
-export function getChatsList() {}

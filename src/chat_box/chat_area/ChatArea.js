@@ -15,13 +15,7 @@ function ChatArea(props) {
         {props?.currentChat?.messageList?.map((cur_item, index) => {
           return (
             <div className="row chatrow" key={index}>
-              <span
-                className={
-                  index % 2 === 0 ? "green-bubble" : "bubble blue-bubble"
-                }
-              >
-                {cur_item.data}
-              </span>
+              <span className="bubble blue-bubble">{cur_item.data}</span>
             </div>
           );
         })}

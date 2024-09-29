@@ -2,6 +2,7 @@ import {
   addMessageToChatID,
   addToChatList,
   emptyNewChatUserList,
+  getChatList,
 } from "./chatFunctionality";
 
 let currSessionStorageIsLoggedIn = sessionStorage.getItem("isLoggedIn");
@@ -75,20 +76,6 @@ function setIsDarkMode(currentState) {
 
 function setSearchString(currentState, payload) {
   return { ...currentState, searchString: payload };
-}
-
-function getChatList(currentState, payload) {
-  const allChatsData = payload.map((chatData) => {
-    return {
-      chatInfo: { ...chatData.chat_info },
-      messageList: [...chatData.message_list],
-    };
-  });
-
-  return {
-    ...currentState,
-    chatList: [...currentState.chatList, ...allChatsData],
-  };
 }
 
 function setShowChatbox(currentState, payload) {
