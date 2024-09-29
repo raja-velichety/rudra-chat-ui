@@ -23,7 +23,7 @@ function Chatlist(props) {
             {...props}
           />
           <div className="chatlist-display">
-            {props.chatlist.length === 0 && !newChatToggle && (
+            {props?.chatlist?.length === 0 && !newChatToggle && (
               <div className="individual-chat">
                 <p>No chats to Display. Click on new chat to get started</p>
               </div>

@@ -31,7 +31,7 @@ export default function ChatToolbar(props) {
   }
   return (
     <>
-      <nav className="navbar navbar-light bg-light">
+      <nav className="navbar navbar-light bg-light chat-toolbar">
         <span className="navbar-brand mb-0 h1">
           {props?.chat?.chatInfo?.name}
         </span>

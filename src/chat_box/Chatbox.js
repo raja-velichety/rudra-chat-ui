@@ -16,7 +16,7 @@ function Chatbox() {
     function getChatList() {
       const url =
         "http://localhost:8000/chat-api/get-chat-list/" +
-        globalChatState?.userInfo.id;
+        globalChatState?.userInfo?.id;
       const handleData = (data) => {
         return dispatchFunction({ type: "getChatList", payload: data.data });
       };
@@ -37,7 +37,7 @@ function Chatbox() {
         <Navbar gcs={globalChatState} />
         <div
           className={classNames(
-            globalChatState.showChatbox
+            globalChatState?.showChatbox
               ? "chat-container chat-container-with-chatlist"
               : "chat-container flex-center"
           )}
@@ -45,13 +45,13 @@ function Chatbox() {
           <div className="row">
             <div
               className={classNames(
-                globalChatState.showChatbox
+                globalChatState?.showChatbox
                   ? "col-md-3 col-sm-12"
                   : "col-md-12 col-sm-12 only-chatlist-on-desktop"
               )}
             >
               <Chatlist
-                chatlist={globalChatState.chatList}
+                chatlist={globalChatState?.chatList}
                 dispatchFunction={dispatchFunction}
                 globalChatState={globalChatState}
                 showChatbox={showChatbox}
@@ -61,10 +61,10 @@ function Chatbox() {
             </div>
             <div
               className={classNames(
-                globalChatState.showChatbox ? "d-block col-md-9" : "d-none"
+                globalChatState?.showChatbox ? "d-block col-md-9" : "d-none"
               )}
             >
-              <div className="chatbox row">
+              <div className="chatbox">
                 <ChatArea
                   className="chatarea"
                   globalChatState={globalChatState}

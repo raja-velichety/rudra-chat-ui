@@ -1,14 +1,13 @@
 .chatlist {
   display: flex;
   flex-direction: column;
-  background-color: black;
-  border: black solid 1px;
   border-radius: 1rem;
+  max-height: 35rem;
 }
 
 .chatlist-display {
   overflow-y: scroll;
-  max-height: 35rem;
+  max-height: inherit;
   overflow-x: hidden;
   min-width: 100%;
   -ms-overflow-style: none; /* IE and Edge */

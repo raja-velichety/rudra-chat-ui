@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./TopToolbar.css";
 import classNames from "classnames";
 import { context } from "../../../App";
@@ -14,7 +13,7 @@ export default function TopToolbar(props) {
       props.newChat;
 
     const handleData = (data) => {
-      const currentChat = data.data;
+      const currentChat = data?.data;
 
       dispatchFunction({
         type: "addToChatList",
@@ -26,9 +25,9 @@ export default function TopToolbar(props) {
   }
 
   async function checkIfUserIsInChatList() {
-    const chats = await globalChatState.chatList.filter((chat) => {
+    const chats = await globalChatState?.chatList?.filter((chat) => {
       if (
-        chat.email.toLowerCase().startsWith(props.newChat.toLowerCase()) ===
+        chat?.email?.toLowerCase().startsWith(props.newChat.toLowerCase()) ===
         true
       ) {
         return chat;
@@ -50,7 +49,7 @@ export default function TopToolbar(props) {
             <button
               className="btn"
               onClick={() => {
-                props.setNewChatToogle(() => !props.newChatToggle);
+                props.setNewChatToogle(() => !props?.newChatToggle);
               }}
             >
               💬
@@ -58,11 +57,11 @@ export default function TopToolbar(props) {
           </div>
         </div>
       </div>
-      <div className={classNames(props.newChatToggle ? "d-flex" : "d-none")}>
+      <div className={classNames(props?.newChatToggle ? "d-flex" : "d-none")}>
         <input
           type="text"
           className={classNames("newchat")}
-          value={props.newChat}
+          value={props?.newChat}
           placeholder="Create new chat"
           onChange={(e) => {
             props.setNewChat(e.target.value);
@@ -70,8 +69,8 @@ export default function TopToolbar(props) {
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               checkUser();
-              props.setNewChat("");
-              props.setNewChatToogle(false);
+              props?.setNewChat("");
+              props?.setNewChatToogle(false);
             } else {
               checkIfUserIsInChatList();
             }

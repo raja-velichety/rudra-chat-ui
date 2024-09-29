@@ -12,7 +12,7 @@ function Navbar(props) {
     <>
       <nav className="navbar navbar-light bg-light">
         <span className="navbar-brand mb-0 h1">
-          Hello {props.gcs.userInfo.name}
+          Hello {props?.gcs?.userInfo?.name}
         </span>
         <span className="navbar-text">
           <button className="btn btn-black" onClick={chatUserSignOut}>

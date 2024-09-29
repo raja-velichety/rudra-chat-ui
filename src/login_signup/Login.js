@@ -18,7 +18,7 @@ export default function Login() {
     const url = "http://localhost:8000/chat-api/login-chat-user/";
 
     const handleData = (data) => {
-      if (data.isLoggedIn === "True") {
+      if (data?.isLoggedIn === "True") {
         dispatchFunction({
           type: "getUserInfo",
           payload: [...JSON.parse(data.userInfo)][0],

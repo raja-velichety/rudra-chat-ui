@@ -1,9 +1,9 @@
 .chat-container {
-  margin-top: 5rem;
-  max-height: inherit;
-  min-height: inherit;
+  max-height: 35rem;
+  min-height: 35rem;
   max-width: inherit;
-  overflow-y: scroll;
+  border: 1px solid rgb(162, 156, 156);
+  border-radius: 1rem;
 }
 
 .flex-center {
@@ -13,8 +13,6 @@
 
 .chat-container-with-chatlist {
   background-color: black;
-  border-radius: 1rem;
-  border: 1px solid black;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -30,25 +28,12 @@
 
 .chatbox {
   display: flex;
-  flex-direction: row;
-  border-top-left-radius: 0rem;
-  border-bottom-left-radius: 0rem;
+  flex-direction: column;
   background-color: rgb(240, 240, 240);
-  padding-bottom: 1rem;
-}
-
-.chatbox .chatbar {
-  align-self: flex-end;
-}
-
-.chatbox .chatter {
   min-height: 35rem;
   max-height: 35rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  min-width: 100%;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .chatbox .chatbar {
