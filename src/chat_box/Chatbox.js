@@ -33,12 +33,12 @@ function Chatbox() {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container">
         <Navbar gcs={globalChatState} />
         <div
           className={classNames(
             globalChatState?.showChatbox
-              ? "chat-container chat-container-with-chatlist"
+              ? "chat-container"
               : "chat-container flex-center"
           )}
         >
@@ -47,7 +47,7 @@ function Chatbox() {
               className={classNames(
                 globalChatState?.showChatbox
                   ? "col-md-3 col-sm-12"
-                  : "col-md-12 col-sm-12 only-chatlist-on-desktop"
+                  : "col-md-12 col-sm-12"
               )}
             >
               <Chatlist

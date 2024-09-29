@@ -1,9 +1,10 @@
 .chat-container {
   max-height: 35rem;
   min-height: 35rem;
-  max-width: inherit;
   border: 1px solid rgb(162, 156, 156);
   border-radius: 1rem;
+  background-color: black;
+  width: fit-content;
 }
 
 .flex-center {
